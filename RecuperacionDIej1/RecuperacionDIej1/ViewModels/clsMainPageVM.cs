@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace RecuperacionDIej1.ViewModels
 {
@@ -23,6 +24,7 @@ namespace RecuperacionDIej1.ViewModels
         private String mensajeVictoria;
         private int parejasCorrectas;
         private Stopwatch reloj = new Stopwatch();
+        private DelegateCommand _reiniciarCommand;
 
         #endregion
 
@@ -34,6 +36,8 @@ namespace RecuperacionDIej1.ViewModels
             cartaSeleccionada = null;
             cartaSeleccionada2 = null;
             parejasCorrectas = 0;
+
+            _reiniciarCommand = new DelegateCommand(Reiniciar_Executed);
 
             Clickable = true;
 
@@ -138,6 +142,14 @@ namespace RecuperacionDIej1.ViewModels
             }
         }
 
+        public DelegateCommand reiniciarCommand
+        {
+            get
+            {
+                return _reiniciarCommand;
+            }
+        }
+
         #endregion
 
         #region Métodos
@@ -204,11 +216,20 @@ namespace RecuperacionDIej1.ViewModels
             {
                 reloj.Stop();
                 MensajeVictoria = "Ha ganado";
+
+                await Task.Delay(5000);
+
+                Reiniciar_Executed();
             }
             else
             {
                 Clickable = true;
             }
+        }
+
+        private void Reiniciar_Executed()
+        {
+            ((Frame)Window.Current.Content).Navigate(typeof(MainPage));
         }
 
         private void timer_Tick(object sender, object e)

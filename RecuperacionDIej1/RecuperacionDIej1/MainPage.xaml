@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         
         <RelativePanel Grid.Column="0">
-            <AppBarButton Name="Reiniciar" Icon="Refresh" Click="Reiniciar_Click" RelativePanel.AlignLeftWithPanel="True" Margin="20,0"/>
+            <AppBarButton Name="Reiniciar" Label="Nueva Partida" Icon="Refresh" Command="{Binding reiniciarCommand}" RelativePanel.AlignLeftWithPanel="True" Margin="20,0"/>
             <TextBlock Name="Reloj" Text="{Binding TextoReloj}" RelativePanel.Below="Reiniciar" RelativePanel.AlignHorizontalCenterWith="Reiniciar"/>
             <TextBlock Text="{Binding MensajeVictoria}" RelativePanel.Below="Reloj" RelativePanel.AlignHorizontalCenterWith="Reiniciar"/>
         </RelativePanel>
