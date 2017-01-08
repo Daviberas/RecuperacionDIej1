@@ -28,10 +28,5 @@ namespace RecuperacionDIej1
         {
             this.InitializeComponent();
         }
-
-        private void Reiniciar_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MainPage));
-        }
     }
 }
